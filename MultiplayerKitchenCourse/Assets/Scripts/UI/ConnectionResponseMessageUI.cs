@@ -1,11 +1,20 @@
+using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConnectingUI : MonoBehaviour
+public class ConnectionResponseMessageUI : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI messageText;
+    [SerializeField] Button closeButton;
+
+    private void Awake()
+    {
+        closeButton.onClick.AddListener(Hide);
+    }
+
     private void Start()
     {
-        KitchenGameMultiplayer.Instance.OnTryingToJoinGame += KitchenGameMultiplayer_OnTryingToJoinGame;
         KitchenGameMultiplayer.Instance.OnFailToJoinGame += KitchenGameMultiplayer_OnFailToJoinGame;
 
         Hide();
@@ -13,12 +22,12 @@ public class ConnectingUI : MonoBehaviour
 
     private void KitchenGameMultiplayer_OnFailToJoinGame(object sender, System.EventArgs e)
     {
-        Hide();
-    }
-
-    private void KitchenGameMultiplayer_OnTryingToJoinGame(object sender, System.EventArgs e)
-    {
         Show();
+
+        messageText.text = NetworkManager.Singleton.DisconnectReason;
+
+        if (messageText.text == "")
+            messageText.text = "Failed to connect.";
     }
 
     void Show()
@@ -31,9 +40,9 @@ public class ConnectingUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+
     private void OnDestroy()
     {
-        KitchenGameMultiplayer.Instance.OnTryingToJoinGame -= KitchenGameMultiplayer_OnTryingToJoinGame;
         KitchenGameMultiplayer.Instance.OnFailToJoinGame -= KitchenGameMultiplayer_OnFailToJoinGame;
     }
 }
