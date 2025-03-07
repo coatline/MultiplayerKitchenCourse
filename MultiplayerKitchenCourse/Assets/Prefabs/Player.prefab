@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 842558071
   InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -60,6 +62,8 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &2264287893703885950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61725cf0ae71c84291bcc9aaa16b746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   moveSpeed: 7
   countersLayerMask:
     serializedVersion: 2
@@ -85,6 +90,7 @@ MonoBehaviour:
   - {x: -2, y: 0, z: 0}
   - {x: 2, y: 0, z: -2}
   - {x: -2, y: 0, z: 2}
+  playerVisual: {fileID: 7680690766274511704}
 --- !u!114 &1147615168782599599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AuthorityMode: 0
+  TickSyncChildren: 0
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 0
@@ -126,6 +136,7 @@ MonoBehaviour:
   UseQuaternionCompression: 0
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
 --- !u!65 &1140118768561482139
@@ -346,6 +357,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 6728538370995783819}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7680690766274511704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4032932170562554835, guid: 1c5dda3c7cd3cf742afcade5419faeab,
+    type: 3}
+  m_PrefabInstance: {fileID: 6728538370995783819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8131747015192421548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1944c9c5bcb144480270d56d452031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8131747015192421548 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3294758251327466535, guid: 1c5dda3c7cd3cf742afcade5419faeab,
@@ -364,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a45cd72e0e3ca4b83fb6f479c95850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   player: {fileID: 2264287893703885950}
 --- !u!114 &8313044368575608217
 MonoBehaviour:
@@ -377,6 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
   m_Animator: {fileID: 1079790099241427423}
 --- !u!4 &8131747015192421551 stripped
